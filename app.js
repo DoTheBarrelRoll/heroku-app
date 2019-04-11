@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
+const port = process.env.PORT || 3000;
 
 // body-parser setup
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,8 +16,7 @@ const dbConfig = require('./config/dbconnection.js');
 mongoose.Promise = global.Promise;
 
 mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true,
-    useMongoClient: true
+    useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to the database");
 }).catch(err => {
@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
 require('./routes/student.routes.js')(app);
 require('./routes/student.routes.js')(app);
 
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+app.listen(port, () => {
+    console.log("Server is listening on port " + port);
 });
 
 module.exports = app;
