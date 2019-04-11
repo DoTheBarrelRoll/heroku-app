@@ -1,3 +1,3 @@
 module.exports = {
-    url: 'mongodb://localhost:27017/admin'
+    url: 'mongodb+srv://dbadmin:<password>@cluster0-mblku.mongodb.net/test?retryWrites=true'
 }
